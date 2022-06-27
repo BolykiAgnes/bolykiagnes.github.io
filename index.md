@@ -1,11 +1,11 @@
 # Project references
 
-### Markdown
+
+### Database design and development
+
+At the University I designed a database based on custom theme. I created the Entity Relation diagram and the database scheme. I created the specified tables and filled them with random generated data. I wrote various sql queries, stored procedures, functions, triggers in accordance with the course requirements (simple queries, grouping, subqueries, etc.). My solution is documented [here]().
 
 
-# Header 1
-## Header 2
-### Header 3
 
 - Bulleted
 - List
