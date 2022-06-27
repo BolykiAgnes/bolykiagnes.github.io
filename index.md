@@ -1,4 +1,4 @@
-## Project references
+# Project references
 
 ### Markdown
 
