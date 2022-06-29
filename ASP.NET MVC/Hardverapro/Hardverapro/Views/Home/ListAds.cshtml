@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Hardverapro.Models.Advertisement>
+
+@{
+    ViewData["Title"] = "ListAds";
+    bool isStudent = (bool)ViewData["isStudent"];
+}
+
+<h1>Advertisements</h1>
+
+<p>
+    <a asp-action="NewAd" class="btn btn-success">Advertise Now!</a>
+</p>
+
+<div class="card-columns">
+
+    @foreach (var item in Model)
+    {
+    <div class="card">
+        <table class="table table-borderless">
+            <tr>
+                <td class="text-center">
+                    @{
+                        if (item.PictureData == null)
+                        {
+                            <img src="~/default.jpg" width="128" class="center" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Action("GetPictureData", "Home", new { uid = item.UID })"
+                                 width="128" class="center" />
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+       
+    <div class="card-body">
+        <h5 class="card-title text-center">@item.Name</h5>
+
+        <table class="table table-borderless">
+            <tr>
+                <td class="text-left font-weight-bold">@Html.DisplayNameFor(modelItem => item.Price):</td>
+                <td class="text-right">
+                    @{
+
+                        if (isStudent)
+                        {
+                            double price = item.Price * 0.9;
+                            @price
+                        }
+                        else
+                        {
+                            @item.Price
+                        }
+
+                    } Ft
+
+                </td>
+            </tr>
+        </table>
+        <table class="table table-borderless">
+            <tr>
+                <td class="font-weight-bold text-left">@Html.DisplayNameFor(modelItem => item.City):</td>
+                <td class="text-right">@Html.DisplayFor(modelItem => item.City)</td>
+            </tr>
+        </table>
+
+        <table class="table table-borderless">
+            <tr>
+                <td class="font-weight-bold text-left">@Html.DisplayNameFor(modelItem => item.ShipMethod):</td>
+                <td class="text-right">@Html.DisplayFor(modelItem => item.ShipMethod)</td>
+            </tr>
+        </table>
+
+        <table class="table table-borderless">
+            <tr>
+                <td class="text-center">
+                    @if (this.User.Identity != null && this.User.Identity.IsAuthenticated)
+                    {
+                    <p class="font-weight-bold"><a href="mailto:@item.Email">@item.Email</a></p>
+                    }
+                    else
+                    {
+
+                        <p class="card-text">Please <a href = "/Identity/Account/Login"> log in</a > or <a href = "/Identity/Account/Register"> register </a> to make contact!</p>
+                    }
+
+                </td>
+            </tr>
+        </table>
+
+        
+
+    </div>
+        <div class="card-footer">
+            <small class="text-muted">Created on @item.CreationDate.</small>
+
+        </div>
+    </div>
+    }
+
+</div>
+
+

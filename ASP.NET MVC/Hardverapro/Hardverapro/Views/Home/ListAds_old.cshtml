@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Hardverapro.Models.Advertisement>
+
+@{
+    ViewData["Title"] = "ListAds";
+    bool isStudent = (bool)ViewData["isStudent"];
+}
+
+<h1>Advertisements</h1>
+
+<p>
+    <a asp-action="NewAd" class="btn btn-success">Advertise Now!</a>
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.PictureData)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.ShipMethod)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.Creator.Email)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="text-center align-middle">
+                @{
+                    if (item.PictureData == null)
+                    {
+                        <img src="~/default.jpg" width="128"/>
+                    }
+                    else
+                    {
+                        <img src="@Url.Action("GetPictureData", "Home", new { uid = item.UID })"
+                             width="128" />
+                    }
+                }
+            </td>
+            <td class="text-center align-middle">
+                @{
+
+                    if (isStudent)
+                    {
+                        double price = item.Price * 0.9;
+                        @price
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Price)
+                    }
+
+                }
+
+
+            </td>
+            <td class="text-center align-middle">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="text-center align-middle">
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td class="text-center align-middle">
+                @Html.DisplayFor(modelItem => item.ShipMethod)
+            </td>
+            <td class="text-center align-middle">
+                @if (this.User.Identity != null && this.User.Identity.IsAuthenticated)
+                {
+                    @Html.DisplayFor(modelItem => item.Email)
+                }
+                else
+                {
+                    <p>Please <a href="/Identity/Account/Login">log in</a> or <a href="/Identity/Account/Register">register</a> to make contact!</p>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
