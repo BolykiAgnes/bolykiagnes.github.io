@@ -7,7 +7,7 @@ At the University I designed a database based on custom theme. I created the Ent
 
 
 ### ASP.NET MVC
-I used the MVC architectural pattern in a webshop-like application where people can offer their own products for sale. The use of the webshop requires authorization and authentication. There are 3 user roles: admin, student and normal user. The admin has full control on the website, the students have discount on every product. The users can post an ad with picture and description. The project is available [here](https://github.com/BolykiAgnes/bolykiagnes.github.io/tree/main/ASP.NET%20MVC/Hardverapro).
+I used the ASP.NET MVC framework in a webshop-like application where people can offer their own products for sale. The use of the webshop requires authorization and authentication. There are 3 user roles: admin, student and normal user. The admin has full control on the website, the students have discount on every product. The users can post an ad with picture and description. The project is available [here](https://github.com/BolykiAgnes/bolykiagnes.github.io/tree/main/ASP.NET%20MVC/Hardverapro).
 
 - Bulleted
 - List
