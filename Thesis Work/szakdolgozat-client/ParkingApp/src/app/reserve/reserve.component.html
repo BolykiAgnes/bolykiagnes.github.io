@@ -1,0 +1,33 @@
+<div class="container">
+  <form>
+    <div class="form-group col-md-4 m-3">
+      <label for="parkingLot">Parkolóház</label>
+      <select id="parkingLot" class="form-control" #parkingLot>
+        <option *ngFor="let parkingLot of parkingLots" [selected]="isSelected(parkingLot.id)" [value]="parkingLot.id">{{parkingLot.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-4 m-3">
+      <label for="licensePlate">Autó</label>
+      <select id="licensePlate" class="form-control" #licensePlate>
+        <option *ngFor="let licensePlate of licensePlates" [value]="licensePlate">{{licensePlate}}</option>
+      </select> <button class="btn btn-primary m-2" routerLink="/add-plates">Új rendszám felvétele</button>
+    </div>
+
+    <div class="form-group col-md-4 m-3">
+      <label for="size">Parkolóhely mérete</label>
+      <select id="size" class="form-control" #size>
+        <option value="X" selected>Mindegy</option>
+        <option value="S">Kis méretű parkolóhely</option>
+        <option value="M">Normál méretű parkolóhely</option>
+        <option value="L">Nagy méretű parkolóhely</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4 m-3">
+      <label for="inputDay">Melyik napra foglalsz?</label>
+      <input type="date" class="form-control" id="inputDay" [value]="getCurrentDate()" #day>
+    </div>
+    <button type="button" class="btn btn-primary m-3 align-content-center" (click)="makeReservation(parkingLot, licensePlate, size, day)">Hozzáadás</button>
+  </form>
+
+</div>

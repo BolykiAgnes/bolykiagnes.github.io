@@ -1,0 +1,3 @@
+<div [ngClass]="{'available': spotStatus.isAvailable, 'occupied': !spotStatus.isAvailable}">
+  {{spotStatus.text.toUpperCase()}}
+</div>

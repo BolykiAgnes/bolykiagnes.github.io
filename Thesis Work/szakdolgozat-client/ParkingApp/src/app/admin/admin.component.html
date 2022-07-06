@@ -1,0 +1,29 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Parkolás napja</th>
+    <th scope="col">Parkoló neve</th>
+    <th scope="col">Parkolóhely száma</th>
+    <th scope="col">Autó</th>
+    <th scope="col">Állapot</th>
+    <th scope="col">Belépés</th>
+    <th scope="col">Kilépés</th>
+    <th scope="col">Műveletek</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let reservation of reservations">
+    <td>{{reservation.day | date:'YYYY. MM. dd.'}}</td>
+    <td>{{reservation.parkingLotName}}</td>
+    <td>{{reservation.spotId}}</td>
+    <td>{{reservation.licensePlateText}}</td>
+    <td>{{reservation.status}}</td>
+    <td>{{reservation.arrivalTimeStamp | date:'HH:mm:ss'}}</td>
+    <td>{{reservation.exitTimeStamp | date:'HH:mm:ss'}}</td>
+    <td>
+      <button class="btn btn-primary" (click)="setArrived(reservation.reservationID)">Megérkezett</button> <button class="btn btn-warning" (click)="setExited(reservation.reservationID)">Távozott</button> <button class="btn btn-danger" (click)="delete(reservation.reservationID)"> Törlés</button>
+    </td>
+  </tr>
+
+  </tbody>
+</table>

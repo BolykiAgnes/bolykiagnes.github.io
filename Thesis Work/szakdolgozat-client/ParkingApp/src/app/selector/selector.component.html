@@ -1,0 +1,11 @@
+
+<div class="container">
+
+  <div class="row m-3" *ngFor="let parkingLot of parkingLots">
+    <button [disabled]="!isLoggedIn()" (click)="setParkingLot(parkingLot.id)" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="{{parkingLot.address}}">
+      {{parkingLot.name}} ({{parkingLot.availableSpots}} szabad hely)
+    </button>
+  </div>
+</div>
+
+

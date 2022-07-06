@@ -1,0 +1,16 @@
+<div class="container">
+  <form>
+    <div class="form-group col-md-4 m-3">
+      <label for="licensePlate">Autó</label>
+      <select id="licensePlate" class="form-control" #licensePlate>
+        <option *ngFor="let licensePlate of licensePlates" [value]="licensePlate" >{{licensePlate == reservation.licensePlateText ? licensePlate + ' (jelenlegi)' : licensePlate}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4 m-3">
+      <label for="inputDay">Melyik napra módosítod a foglalást?</label>
+      <input type="date" class="form-control" id="inputDay" [value]="getCurrentDate()" #day>
+    </div>
+    <button type="button" class="btn btn-primary m-3 align-content-center" (click)="editReservation(licensePlate, day)">Módosítás</button>
+  </form>
+
+</div>

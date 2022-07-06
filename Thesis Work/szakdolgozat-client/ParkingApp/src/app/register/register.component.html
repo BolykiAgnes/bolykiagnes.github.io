@@ -1,0 +1,31 @@
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="inputLastName">Vezetéknév</label>
+      <input type="text" class="form-control" id="inputLastName" placeholder="Teszt" #lastName>
+    </div>
+    <div class="form-group">
+      <label for="inputFirstName">Keresztnév</label>
+      <input type="text" class="form-control" id="inputFirstName" placeholder="Elek"  #firstName>
+    </div>
+
+    <div class="form-group">
+      <label for="inputPhone">Telefonszám</label>
+      <input type="text" class="form-control" id="inputPhone" placeholder="+36301112222" #phone>
+    </div>
+    <div class="form-group">
+      <label for="inputPlates">Autók</label>
+      <input type="text" class="form-control" id="inputPlates" placeholder="Add meg a használni kívánt autóid rendszámát vesszővel elválasztva!" #plates>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">E-mail cím</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="név@email.hu" #email>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Jelszó</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="******" #password>
+    </div>
+    <button type="button" class="btn btn-primary mt-3" (click)="register(firstName, lastName, phone, plates, email, password)">Regisztráció</button>
+  </form>
+
+</div>
